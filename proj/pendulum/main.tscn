@@ -1,0 +1,69 @@
+[gd_scene load_steps=6 format=3 uid="uid://c67q3u4xy1t0m"]
+
+[ext_resource type="Texture2D" uid="uid://c56c6t0yyy5xy" path="res://circle.png" id="1_1jkdl"]
+[ext_resource type="Script" path="res://main.gd" id="1_22v6e"]
+[ext_resource type="Script" path="res://Pendulum.gd" id="1_j6eay"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_mxmxx"]
+blend_mode = 1
+
+[sub_resource type="Environment" id="Environment_1r6e5"]
+background_mode = 3
+glow_enabled = true
+glow_intensity = 0.3
+glow_strength = 2.0
+glow_bloom = 0.4
+glow_blend_mode = 0
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_22v6e")
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+offset_right = 600.0
+offset_bottom = 600.0
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+own_world_3d = true
+transparent_bg = true
+size = Vector2i(600, 600)
+render_target_update_mode = 4
+
+[node name="Pendulum1" type="Node2D" parent="SubViewportContainer/SubViewport"]
+modulate = Color(1, 0, 0, 1)
+position = Vector2(300, 100)
+script = ExtResource("1_j6eay")
+delay = 0.2
+
+[node name="Circle" type="Sprite2D" parent="SubViewportContainer/SubViewport/Pendulum1"]
+material = SubResource("CanvasItemMaterial_mxmxx")
+position = Vector2(0, 200)
+texture = ExtResource("1_1jkdl")
+
+[node name="Pendulum2" type="Node2D" parent="SubViewportContainer/SubViewport"]
+modulate = Color(0, 1, 0, 1)
+position = Vector2(300, 100)
+script = ExtResource("1_j6eay")
+delay = 0.4
+
+[node name="Circle" type="Sprite2D" parent="SubViewportContainer/SubViewport/Pendulum2"]
+material = SubResource("CanvasItemMaterial_mxmxx")
+position = Vector2(0, 200)
+texture = ExtResource("1_1jkdl")
+
+[node name="Pendulum3" type="Node2D" parent="SubViewportContainer/SubViewport"]
+modulate = Color(0, 0, 1, 1)
+position = Vector2(300, 100)
+script = ExtResource("1_j6eay")
+
+[node name="Circle" type="Sprite2D" parent="SubViewportContainer/SubViewport/Pendulum3"]
+material = SubResource("CanvasItemMaterial_mxmxx")
+position = Vector2(0, 200)
+texture = ExtResource("1_1jkdl")
+
+[node name="ColorRect" type="ColorRect" parent="SubViewportContainer/SubViewport"]
+offset_right = 600.0
+offset_bottom = 600.0
+color = Color(0, 0, 0, 0.0196078)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="SubViewportContainer"]
+environment = SubResource("Environment_1r6e5")
