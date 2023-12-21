@@ -1,4 +1,9 @@
+
 # godot4_small-gif-collection
+
+## showcase
+
+![pendulum gif](./pendulum.gif)
 
 ## sources
 
