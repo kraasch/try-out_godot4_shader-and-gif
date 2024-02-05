@@ -1,5 +1,5 @@
 
-# godot4_small-gif-collection
+# try-out_godot4_shader-and-gif
 
 ## showcase
 
